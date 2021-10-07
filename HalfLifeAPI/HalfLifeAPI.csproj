@@ -9,10 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Utility">
       <HintPath>..\..\..\Utility\bin\Debug\netcoreapp3.1\Utility.dll</HintPath>
     </Reference>
