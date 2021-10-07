@@ -24,9 +24,17 @@ namespace HalfLifeAPI.Data
         }
 
 
-        public void Aggiungi()
+
+        //METODO NON ORM
+        public void Aggiungi(Personaggio p)
         {
-            throw new NotImplementedException();
+            bool esitoInserimento = _db.Update("insert into personaggi(nome,potenza,dob) values " +
+                $"('{p.Nome}',{p.Potenza},'{p.Dob.ToString("yyyy-MM-dd")}')");
+
+            if (esitoInserimento)
+                Console.WriteLine("Inserimento Effettuato");
+            else
+                Console.WriteLine("Inserimento Non Effettuato");
         }
 
         //METODO ORM
@@ -35,12 +43,17 @@ namespace HalfLifeAPI.Data
             //essendo pochi dati usiamo Linq
             return Leggi().Where(p => p.Id == id).FirstOrDefault();
         }
-
+/*
         public void Elimina(int id)
         {
-            throw new NotImplementedException();
-        }
+            bool esitoEliminazione = _db.Update("delete from personaggi where id=" + id);
 
+            if(esitoEliminazione)
+                Console.WriteLine("Eliminazione Effettuata");
+            else
+                Console.WriteLine("Eliminazione Non Effettuata");
+        }
+*/
         //METODO NON ORM
         public List<Personaggio> Leggi()
         {
@@ -63,5 +76,6 @@ namespace HalfLifeAPI.Data
         {
             throw new NotImplementedException();
         }
+
     }
 }

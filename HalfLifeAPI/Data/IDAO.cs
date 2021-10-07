@@ -13,7 +13,7 @@ namespace HalfLifeAPI.Data
 
         public T Cerca(int id);
 
-        public void Aggiungi();
+        public void Aggiungi(T t);
 
         public void Modifica();
 

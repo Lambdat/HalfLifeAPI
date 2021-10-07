@@ -31,7 +31,13 @@ namespace HalfLifeAPI.Controllers
             return _iPersonaggiService.Cerca(id);
         }
 
+        [HttpPost]
+        public IActionResult Aggiungi([FromBody] Personaggio p)
+        {
+            _iPersonaggiService.Aggiungi(p);
 
+            return Ok();
+        }
 
     }
 }
