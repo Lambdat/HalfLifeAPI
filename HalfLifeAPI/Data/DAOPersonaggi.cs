@@ -43,7 +43,7 @@ namespace HalfLifeAPI.Data
             //essendo pochi dati usiamo Linq
             return Leggi().Where(p => p.Id == id).FirstOrDefault();
         }
-/*
+
         public void Elimina(int id)
         {
             bool esitoEliminazione = _db.Update("delete from personaggi where id=" + id);
@@ -53,7 +53,7 @@ namespace HalfLifeAPI.Data
             else
                 Console.WriteLine("Eliminazione Non Effettuata");
         }
-*/
+
         //METODO NON ORM
         public List<Personaggio> Leggi()
         {

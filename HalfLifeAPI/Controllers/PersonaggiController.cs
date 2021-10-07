@@ -24,7 +24,7 @@ namespace HalfLifeAPI.Controllers
             return _iPersonaggiService.Leggi();
         }
 
-        //Cerca con Wild Card {Id}
+        //Cerca con Wild Card {Id} passata per route
         [HttpGet("{id}")]
         public Personaggio Cerca([FromRoute]int id)
         {
@@ -36,8 +36,18 @@ namespace HalfLifeAPI.Controllers
         {
             _iPersonaggiService.Aggiungi(p);
 
+            return Ok(); //return del 200 OK di Postman
+        }
+
+        //Eliminazione con Wild Card {id} passata per route
+        [HttpDelete("{id}")]
+        public IActionResult Elimina([FromRoute] int id)
+        {
+            _iPersonaggiService.Elimina(id);
+
             return Ok();
         }
+
 
     }
 }
