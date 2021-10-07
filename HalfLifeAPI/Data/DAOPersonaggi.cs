@@ -72,9 +72,16 @@ namespace HalfLifeAPI.Data
             return ris;
         }
 
-        public void Modifica()
+        public void Modifica(Personaggio p,int id)
         {
-            throw new NotImplementedException();
+            bool esitoModifica = _db.Update("update personaggi set " +
+                $"nome='{p.Nome}',potenza={p.Potenza},dob='{p.Dob.ToString("yyyy-MM-dd")}' " +
+                $"where id={id}");
+
+            if(esitoModifica)
+                Console.WriteLine("Modifica Effettuata");
+            else
+                Console.WriteLine("Modifica Non Effettuata");
         }
 
     }

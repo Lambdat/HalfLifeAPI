@@ -15,7 +15,7 @@ namespace HalfLifeAPI.Data
 
         public void Aggiungi(T t);
 
-        public void Modifica();
+        public void Modifica(T t, int id);
 
         public void Elimina(int id);
 

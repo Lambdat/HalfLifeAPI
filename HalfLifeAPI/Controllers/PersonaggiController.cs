@@ -47,6 +47,17 @@ namespace HalfLifeAPI.Controllers
 
             return Ok();
         }
+        
+        //Modifica con Wild Card {id} passata per route
+        [HttpPut("{id}")]
+        public IActionResult Modifica([FromBody] Personaggio p, [FromRoute] int id)
+        {
+            _iPersonaggiService.Modifica(p, id);
+
+            return Ok();
+        }
+
+
 
 
     }
