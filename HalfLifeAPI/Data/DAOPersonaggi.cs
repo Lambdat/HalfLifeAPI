@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Utility;
 using HalfLifeAPI.Models;
-using HalfLifeAPI.Services;
 
 namespace HalfLifeAPI.Data
 {
@@ -30,9 +29,11 @@ namespace HalfLifeAPI.Data
             throw new NotImplementedException();
         }
 
-        public Personaggio Cerca()
+        //METODO ORM
+        public Personaggio Cerca(int id)
         {
-            throw new NotImplementedException();
+            //essendo pochi dati usiamo Linq
+            return Leggi().Where(p => p.Id == id).FirstOrDefault();
         }
 
         public void Elimina(int id)
@@ -40,6 +41,7 @@ namespace HalfLifeAPI.Data
             throw new NotImplementedException();
         }
 
+        //METODO NON ORM
         public List<Personaggio> Leggi()
         {
             List<Personaggio> ris = new List<Personaggio>();

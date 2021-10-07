@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using HalfLifeAPI.Data;
 using HalfLifeAPI.Models;
 using Utility;
-using HalfLifeAPI.Services;
+
 
 namespace HalfLifeAPI.Controllers
 {
@@ -15,7 +15,7 @@ namespace HalfLifeAPI.Controllers
     [ApiController]
     public class PersonaggiController : ControllerBase
     {
-
+        //oggetto di tipo interfaccia = all instanza del DAO
         private IDAO<Personaggio> _iPersonaggiService = DAOPersonaggi.GetInstance();
 
         [HttpGet]
@@ -23,6 +23,15 @@ namespace HalfLifeAPI.Controllers
         {
             return _iPersonaggiService.Leggi();
         }
+
+        //Cerca con Wild Card {Id}
+        [HttpGet("{id}")]
+        public Personaggio Cerca([FromRoute]int id)
+        {
+            return _iPersonaggiService.Cerca(id);
+        }
+
+
 
     }
 }

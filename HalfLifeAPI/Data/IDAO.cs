@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Utility;
 
-namespace HalfLifeAPI.Services
+
+namespace HalfLifeAPI.Data
 {
-    public interface IDAO<T>
+    public interface IDAO<T> //<T> sta per generic
     {
 
         public List<T> Leggi();
 
-        public T Cerca();
+        public T Cerca(int id);
 
         public void Aggiungi();
 
