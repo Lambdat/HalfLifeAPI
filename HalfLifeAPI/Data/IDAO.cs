@@ -6,12 +6,12 @@ using Utility;
 
 namespace HalfLifeAPI.Services
 {
-    interface IDAO
+    public interface IDAO<T>
     {
 
-        public List<Entity> Leggi();
+        public List<T> Leggi();
 
-        public Entity Cerca();
+        public T Cerca();
 
         public void Aggiungi();
 
