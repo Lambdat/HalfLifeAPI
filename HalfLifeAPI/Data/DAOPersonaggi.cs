@@ -4,23 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Utility;
 using HalfLifeAPI.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace HalfLifeAPI.Data
 {
     public class DAOPersonaggi : IDAO<Personaggio>
     {
 
-        private Database _db = new Database("half_life");
+        private Database _db;
 
-        //Pattern Singleton per restituire una singola istanza
-        private static DAOPersonaggi _instance = null;
-
-        public static DAOPersonaggi GetInstance()
+        public DAOPersonaggi(IConfiguration config)
         {
-            if (_instance is null)
-                _instance = new DAOPersonaggi();
-
-            return _instance;
+            string nomeDatabase = config["nomeDatabase"]; //Configurazione passata nel file appsettings.json
+            _db = new Database(nomeDatabase);
         }
 
 

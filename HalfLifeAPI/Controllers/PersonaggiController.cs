@@ -16,25 +16,32 @@ namespace HalfLifeAPI.Controllers
     public class PersonaggiController : ControllerBase
     {
         //oggetto di tipo interfaccia = all instanza del DAO
-        private IDAO<Personaggio> _iPersonaggiService = DAOPersonaggi.GetInstance();
+        private IDAO<Personaggio> _idao;
+
+        public PersonaggiController(IDAO<Personaggio> _idao) //L'istanza sarà passata nel file Startup.cs sottoforma di pattern Dependency Injection
+        {
+            this._idao = _idao;
+        }
+
+
 
         [HttpGet]
         public List<Personaggio> Leggi() 
         {
-            return _iPersonaggiService.Leggi();
+            return _idao.Leggi();
         }
 
         //Cerca con Wild Card {Id} passata per route
         [HttpGet("{id}")]
         public Personaggio Cerca([FromRoute]int id)
         {
-            return _iPersonaggiService.Cerca(id);
+            return _idao.Cerca(id);
         }
 
         [HttpPost]
         public IActionResult Aggiungi([FromBody] Personaggio p)
         {
-            _iPersonaggiService.Aggiungi(p);
+            _idao.Aggiungi(p);
 
             return Ok(); //return del 200 OK di Postman
         }
@@ -43,7 +50,7 @@ namespace HalfLifeAPI.Controllers
         [HttpDelete("{id}")]
         public IActionResult Elimina([FromRoute] int id)
         {
-            _iPersonaggiService.Elimina(id);
+            _idao.Elimina(id);
 
             return Ok();
         }
@@ -52,7 +59,7 @@ namespace HalfLifeAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult Modifica([FromBody] Personaggio p, [FromRoute] int id)
         {
-            _iPersonaggiService.Modifica(p, id);
+            _idao.Modifica(p, id);
 
             return Ok();
         }
