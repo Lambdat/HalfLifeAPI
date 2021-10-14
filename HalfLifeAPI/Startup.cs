@@ -35,6 +35,8 @@ namespace HalfLifeAPI
             //Aggiungiamo la singola istanza di Singleton attraverso pattern Dependency Injection
             services.AddSingleton<IDAO<Personaggio>,DAOPersonaggi>();
 
+            //Aggiungiamo la possibilità di consultazione da parte di diverse origini
+            services.AddCors();
 
             // Questa configurazione è abbastanza brutale
             // è permette l'accesso praticamente da qualsiasi origina
@@ -50,6 +52,19 @@ namespace HalfLifeAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            app.UseCors(
+            options => options.AllowAnyOrigin()
+                              .AllowAnyMethod()
+                              .AllowAnyHeader()
+                       );
+            // Questa configurazione è abbastanza brutale
+            // è permette l'accesso praticamente da qualsiasi origina
+            // che utilizza qualsiasi metodo HTTP (GET/POST/PUT/DELETE)
+            // Qualsiasi Header (Metadata delle chiamate)
+
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

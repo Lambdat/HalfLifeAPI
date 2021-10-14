@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 
 namespace HalfLifeAPI.Data
 {
+
+    //Nel nostro semplice contesto DAOPersonaggi fungerà anche da service
     public class DAOPersonaggi : IDAO<Personaggio>
     {
 
